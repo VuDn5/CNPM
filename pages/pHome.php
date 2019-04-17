@@ -1,5 +1,13 @@
-<div class="bottomheader">
+﻿<div class="bottomheader">
 	<div class="container">
+		<ul>
+			<li class="dropdown">
+				<a href="index.php"><b>Trang chủ</b></a>
+			
+			<li class="dropdown">
+				<a href="#thongtin"><b>Thông tin</b></a>
+			</li>
+		</ul>
 	</div> <!-- end container -->
 </div> <!-- end bottomheader -->
 

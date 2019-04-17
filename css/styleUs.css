@@ -196,14 +196,15 @@ input#txtPS {margin-right: 68px;margin-top: 8px;}
 
 input.fa.fa-user {
     top: 40px;
-    margin: 6px 68px 0 0;
+    margin: 6px 48px 0 0;
 }
 
 #frmdn {
-    width: 100%;
-    height: 70px;
+    width: 100px;
+    height: 50px;
     background-color: #dcbdbd;
-    text-align: right;
+    float: right;
+    
     font-family: 'Crimson Text', serif;
     position: fixed;
     top: 0;

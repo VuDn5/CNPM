@@ -1,2 +1,0 @@
-# CNPM
-CNPM-QLTH

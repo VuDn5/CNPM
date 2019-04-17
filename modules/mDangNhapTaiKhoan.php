@@ -1,23 +1,55 @@
 ﻿<div id = "frmdn" >
-    <form name="frmLogin" action="index.php?a=10" method="post" onsubmit="return KiemTraDangNhap()">
-        Tài khoản: <input class="frm" name="txtUS" type="text" id="txtUS" size="15" maxlength="20" width="15">
-        Mật khẩu: <input class="frm" name="txtPS" type="password" id="txtPS" size="15" maxlength="20" width="15"><br>
-        <input type="submit" value="Đăng nhập" class="fa fa-user">
-    </form>
+    <!-----Dang nhap-------->
+    <link href="css/dangnhap.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
-        function KiemTraDangNhap()
-        {
-            var username = document.getElementById("txtUS");
-	    var password = document.getElementById("txtPS");	
-            if(username.value == "" || password.value == "")
-            {
-                username.focus();
-                password.focus();
-                alert("Tên đăng nhập hoặc mật khẩu không được rỗng");
-                return false;
-            }
+    $(document).ready(function() {
+            <!--From dang nhap-->
+            $('a.login-window').click(function() {
+            
+            // Nhận được giá trị của biến từ một liên kết
+            var loginBox = $(this).attr('href');
 
-            return true;
-        }
+            //Fade in the Popup and add close button
+            $(loginBox).fadeIn(300);
+            
+            //Set the center alignment padding + border
+            var popMargTop = ($(loginBox).height() + 24) / 2; 
+            var popMargLeft = ($(loginBox).width() + 24) / 2; 
+            
+            $(loginBox).css({ 
+                'margin-top' : -popMargTop,
+                'margin-left' : -popMargLeft
+            });
+            
+            // Add the mask to body
+            $('body').append('<div id="mask"></div>');
+            $('#mask').fadeIn(300);
+            
+            return false;
+        });
+        
+        // When clicking on the button close or the mask layer the popup closed
+        $('a.close, #mask').live('click', function() { 
+          $('#mask , .login-popup').fadeOut(300 , function() {
+            $('#mask').remove();  
+        }); 
+        return false;
+        });
+        <!--End From Dang nhap-->
+    });
     </script>
-</div>
+
+    <div id = "dangnhap" style="float: right;" >  
+                <?php
+                    if(isset($_SESSION['idUser'])){
+                        require("login/login_hello.php");
+                    }else{
+                ?>
+                      <button style="width: 100px; height: 40px;margin:5px 20px;"><a style="text-decoration:none;color:black;" href="#login-box" class="login-window">đăng nhập</a></button> 
+                <?php
+                    }
+              ?>
+                         
+    </div>   
+</div>                 
+<?php require("login/dangnhap.php");?>  

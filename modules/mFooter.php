@@ -1,4 +1,5 @@
-﻿<div class="footer">
+﻿<a name="thongtin"></a>
+<div class="footer">
     <div class="container">
         <div class="row">
 			<div class="logoft">
