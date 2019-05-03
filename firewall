@@ -1,0 +1,43 @@
+# sample configuration for iptables service
+# you can edit this manually or use system-config-firewall
+# please do not ask us to add additional ports/services to this default configuration
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A INPUT -p icmp -j ACCEPT
+-A INPUT -i lo -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 21 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 81 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 82 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 83 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 84 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 85 -j ACCEPT
+
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 86 -j ACCEPT
+#-I INPUT -p udp --dport 514 -s 118.68.13.46 -j ACCEPT
+#-I INPUT -p tcp --dport 514 -s 118.68.13.46 -j ACCEPT
+#-I INPUT -p tcp --dport 514 -s 118.68.13.116 -j ACCEPT
+#-I INPUT -p udp --dport 514 -s 118.68.13.116 -j ACCEPT
+-A INPUT -s 118.69.135.152/32 -p tcp -m state --state NEW -m tcp --dport 3306 -m comment --comment "database sql" -j ACCEPT
+-A INPUT -s 118.69.221.106/32 -p tcp -m state --state NEW -m tcp --dport 3306 -m comment --comment "database sql" -j ACCEPT
+-A INPUT -s 118.69.135.216/32 -p tcp -m state --state NEW -m tcp --dport 3306 -m comment --comment "database sql" -j ACCEPT
+-A INPUT -s 115.74.22.85/32 -p tcp -m state --state NEW -m tcp --dport 3306 -m comment --comment "database sql" -j ACCEPT
+-A INPUT -s 118.69.221.106/32 -m comment --comment "ip wifi inf" -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 4000 -j ACCEPT
+-A INPUT -p udp -m state --state NEW -m udp --dport 4000 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 443 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 8080 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 5000 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 5545 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 554 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 8880 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 8443 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 9200 -j ACCEPT
+#-A INPUT -p udp -m multiport --dports 12000:65000 -m comment --comment "RTP engine port ranges" -j ACCEPT
+-A INPUT -j REJECT --reject-with icmp-host-prohibited
+-A FORWARD -j REJECT --reject-with icmp-host-prohibited
+COMMIT
