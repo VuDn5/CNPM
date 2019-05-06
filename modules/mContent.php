@@ -1,3 +1,4 @@
+
 <?php
     $a = (isset($_GET['a'])) ? $_GET['a'] : 1; 
     
