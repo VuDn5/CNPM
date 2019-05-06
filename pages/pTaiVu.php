@@ -3,7 +3,13 @@
 		<ul>
 			<li class="dropdown">
 				<a href="../index.php"><b>Trang chủ</b></a>
-			
+			</li>
+			<li class="dropdown">
+				<a href=""><b>DS Sinh Viên</b></a>
+			</li>
+			<li class="dropdown">
+				<a href=""><b>DS Giáo Viên</b></a>
+			</li>
 			<li class="dropdown">
 				<a href=""><b>Sổ điểm</b></a>
 			</li>
