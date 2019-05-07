@@ -24,7 +24,6 @@
     <td width="5%"><strong>Sinh</strong></td>
     <td width="5%"><strong>Sử</strong></td>    
     <td width="5%"><strong>Địa</strong></td>
-    <td width="5%"><strong>GDCD</strong></td>
     <td width="5%"><strong>Tin</strong></td>
     <td width="5%"><strong>AV  </strong></td>    
 
@@ -35,29 +34,31 @@
       while($row=mysqli_fetch_array($result)){
   ?>
   <tr bgcolor="#CCCCCC">  
-   <td><?php echo $row['SBD'] ;?></td>   
-   <td><?php echo $row['Họ Tên']; ?></td>
-    <td><?php echo $row['Ngày Sinh'] ;?></td> 
-    <td><?php echo $row['Giới Tính'] ;?></td>   
-   <td><?php echo $row['Mã Ngành']; ?></td>
-    <td><?php echo $row['Ngành'] ;?></td> 
-    <td><?php echo $row['Toán'] ;?></td> 
-    <td><?php echo $row['Lý'] ;?></td>   
-     <td><?php echo $row['Hóa'] ;?></td> 
+   <td><?php echo $row['Masv'] ;?></td>   
+   <td><?php echo $row['HoTen']; ?></td>
+    <td><?php echo $row['NgaySinh'] ;?></td> 
+    <td><?php echo $row['GioiTinh'] ;?></td>   
+   <td><?php echo $row['MaNganh']; ?></td>
+    <td><?php echo $row['Nganh'] ;?></td> 
+    <td><?php echo $row['Toan'] ;?></td> 
+    <td><?php echo $row['Ly'] ;?></td>   
+     <td><?php echo $row['Hoa'] ;?></td> 
     <td><?php echo $row['Sinh'] ;?></td> 
-    <td><?php echo $row['Sử'] ;?></td> 
-    <td><?php echo $row['Địa'] ;?></td>   
-     <td><?php echo $row['GDCD'] ;?></td> 
+    <td><?php echo $row['Su'] ;?></td> 
+    <td><?php echo $row['Dia'] ;?></td>    
     <td><?php echo $row['Tin'] ;?></td> 
-    <td><?php echo $row['Anh Văn'] ;?></td> 
+    <td><?php echo $row['AV'] ;?></td> 
     <td>
-      <input type="submit" name="button" id="button" value="  Sửa  " onclick="location.href='<?php echo "?p=$p&action=edit&id=".$row['SBD']; ?>';"/>
-      <input type="submit" name="btnxoa" id="btnxoa" value="  Xóa  " onclick="if(confirm(' Bạn muốn xóa không ??')==true){location.href='<?php echo "?p=$p&action=del&id=".$row['SBD']; ?>'}" />
+      <input onclick="window.location = 'student-edit.php?id=<?php echo $item['sv_id']; ?>'" type="button" id="button" value="Sửa" style="width: 50px;"/>
+      <input type="hidden" name="id" value="<?php echo $item['sv_id']; ?>"/>
+      <input onclick="return confirm('Bạn có chắc muốn xóa không?');" type="submit" name="delete" value="Xóa" style="width:50px;"/>
+      
     </td>
   </tr>
   <?php
     }
   ?>
 </table>
+<a href="index.php?a=4&p=AddSV">Thêm sinh viên</a> <br/> <br/>
 </body>
 </html>

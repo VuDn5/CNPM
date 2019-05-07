@@ -29,10 +29,13 @@
             	$p=(isset($_GET['p'])?$_GET['p']:'trangchu');
 				switch($p)
 				{		
-					case "DSSV": 	require("pages/DSSV.php");
+					case "DSSV": 		require("pages/DSSV.php");
 											break;	
 					case "DSGV": 	    require("pages/DSGV.php");
-											break;
+											break;				
+					case "AddSV":		require ("pages/AddSV.php");
+											break;											
+					
 				}
 		
  ?>
