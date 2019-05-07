@@ -6,10 +6,10 @@
 				<a href="#"><b>Trang chủ</b></a>
 			</li>
 			<li class="dropdown">
-				<a href=""><b>DS Sinh Viên</b></a>
+				<a href="?a=4&p=DSSV"><b>DS Sinh Viên</b></a>
 			</li>
 			<li class="dropdown">
-				<a href="#"><b>DS Giáo Viên</b></a>
+				<a href="?a=4&p=DSGV"><b>DS Giáo Viên</b></a>
 			</li>
 			<li class="dropdown">
 				<a href=""><b>Sổ điểm</b></a>
@@ -25,20 +25,14 @@
 <div>
 
 <?php 
-	
-
-		
 
             	$p=(isset($_GET['p'])?$_GET['p']:'trangchu');
 				switch($p)
 				{		
-					
-					
 					case "DSSV": 	require("pages/DSSV.php");
 											break;	
 					case "DSGV": 	    require("pages/DSGV.php");
-											break;															
-					
+											break;
 				}
 		
  ?>
