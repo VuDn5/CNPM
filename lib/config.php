@@ -1,6 +1,14 @@
 <?php
-    $db_host = 'localhost';
-    $db_username = "web1final";
-    $db_password = "123";
-    $db_name = "web1final";
+$servername = "localhost";
+$database = "nhom";
+$username = "root";
+$password = "";
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $database);
+mysqli_set_charset($conn, 'UTF8');
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
 ?>
