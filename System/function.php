@@ -1,4 +1,13 @@
 <?php 
+//--------------------------------------------------------------------------------------
+// Ket noi CSDL
+//--------------------------------------------------------------------------------------
+
+function db_connect($server = DB_SERVER,$username = DB_USERNAME,$password = DB_PASSWORD,$database = DB_DATABASE) {
+	$conn = mysqli_connect($server,$username,$password);
+	if ($conn) mysqli_select_db($database);
+	return $conn;
+}
 
 //--------------------------------------------------------------------------------------
 // Tao Recordset tu cau Query
@@ -17,9 +26,10 @@ function db_query($query) {
 //--------------------------------------------------------------------------------------
 function checkvalue($value,$theType,$theDefinedValue = "",$theNotDefinedValue = "") 
 {
+	global $conn;
   $value = get_magic_quotes_gpc() ? stripslashes($value) : $value;
 
-  $value = mysqli_real_escape_string($value);
+  $value = $conn->real_escape_string($value);
 
   switch ($theType) {
     case "text":
@@ -62,12 +72,13 @@ function upload($file,$path){
 //------------------------------- ------------------------------------------------------
 function chgpass($user,$password_old,$password){
 
+	global $conn;
 	//Kiem tra password old
 	$sql = sprintf("SELECT users.* FROM users WHERE Password=md5(%s) AND Username = %s",
 		checkvalue($password_old,"text"),
 		checkvalue($user,"text"));
 	//echo $sql;
-	$result = mysqli_query($sql);
+	$result = mysqli_query($conn,$sql);
 	$kq = mysqli_fetch_assoc($result);
 	if($kq){	
 		// Neu kiem tra password old OK thi thuc hien doi password
@@ -75,7 +86,7 @@ function chgpass($user,$password_old,$password){
 			checkvalue($password,"text"),
 			checkvalue($user,"text"));
 			//echo $sql;
-			$result = mysqli_query($sql);
+			$result = mysqli_query($conn,$sql);
 			if($result){
 				return 1;
 			}else{

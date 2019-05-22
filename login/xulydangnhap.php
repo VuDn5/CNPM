@@ -1,7 +1,8 @@
 <?php	
 	ob_start();
 	session_start();
-	require("../lib/dbcon.php");
+	  require("../lib/config.php");
+
 	
 	$username=$_POST["Username"];
 	$password=$_POST["Password"];
@@ -11,18 +12,18 @@
 		 from users 
 		 WHERE Username='$username'
 		 AND Password='$password'");
-	$user=mysql_query($qr);
-	$n=mysql_num_rows($user);
+	$user=mysqli_query($conn,$qr);
+	$n=mysqli_num_rows($user);
 	if($n==1)
 	{
-		$row=mysql_fetch_array($user);
+		$row=mysqli_fetch_array($user);
 		$_SESSION["idUser"]=$row['idUser'];
-		$_SESSION["Username"]=$row['Username'];
-		$_SESSION["Password"]=$row['Password'];
-		$_SESSION["HoTen"]=$row['HoTen'];
-		$_SESSION["Email"]=$row['Email'];
-		$_SESSION["GioiTinh"]=$row['GioiTinh'];
+		$_SESSION["username"]=$row['Username'];
+		$_SESSION["password"]=$row['Password'];
+		$_SESSION["hoTen"]=$row['HoTen'];
+		$_SESSION["email"]=$row['Email'];
+		$_SESSION["gioiTinh"]=$row['GioiTinh'];
 		$_SESSION["idGroup"]=$row['idGroup'];		
 	}
-	header("location:".$_SESSION['url']);
+	header("location: login_hello.php");
 ?>
