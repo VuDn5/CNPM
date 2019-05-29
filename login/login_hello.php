@@ -1,8 +1,14 @@
 <div>
+	chào
+	 <?php 
+  	if($_SESSION['txtUsername']){
+		echo " anh ".$_SESSION['txtUsername'];
+	}	
+	?> 
 <?php
 session_start();
-if(!session_is_registered(Username)){
-header("location:main_login.php");
+if(!$_SESSION[txtUsername]){
+header("location:../index.php");
 }
 ?>
 <html>
