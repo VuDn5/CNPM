@@ -1,13 +1,12 @@
-﻿	
+﻿<div>
 	<?php
-       
-		if(!isset($_SESSION['txtUsername']))
+		if(isset($_SESSION['HOTEN']))
 		{
-			include ("modules/mDangNhapTaiKhoan.php");
+			include ("modules/mThongTinTaiKhoan.php");
 		}
 		else
 		{
-			include ("modules/mThongTinTaiKhoan.php");
+			include ("modules/mDangNhapTaiKhoan.php");
 		}
 	?>
 </div>

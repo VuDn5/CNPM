@@ -15,6 +15,9 @@
 	case 4:
             include ("pages/pTaiVu.php");
             break;
+	case 5:
+            include ("modules/mDangXuat.php");
+            break;
         default:
             break;
     }

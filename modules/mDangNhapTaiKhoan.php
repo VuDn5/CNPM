@@ -38,7 +38,6 @@
                    
         }   
 
-        
         $query=mysqli_query($conn, $sql);
         $num_row=mysqli_num_rows($query);
         if ($num_row!=0) {
@@ -48,9 +47,12 @@
             $_SESSION["matkhau"]=$row['matkhau'];
             $_SESSION["HOTEN"]=$row['HOTEN'];
             $_SESSION["HOTEN"]=$row['HOTEN'];
-            
-            echo "bạn đã đăng nhập thành công";
-            echo "xin chào ".$row['HOTEN'];
+		if ($type=='gv') {
+			header("location: ./index.php?a=0&id=3");
+		}
+       	 	else{
+			header("location: ./index.php?a=0&id=4");
+        	}
         }
         else {
             echo " Tên hoặc mật khẩu sai";
