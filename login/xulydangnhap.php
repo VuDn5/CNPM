@@ -2,9 +2,9 @@
 	ob_start();
 	session_start();
 	  $servername = "localhost";
-$database = "cnpm";
-$username = "root";
-$password = "";
+	$database = "cnpm";
+	$username = "root";
+	$password = "";
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $database);
 mysqli_set_charset($conn, 'UTF8');
@@ -27,10 +27,11 @@ $result=mysqli_query($conn,$sql);
 if(mysqli_num_rows($result)>0){
  
 // Lúc này nó sẽ tự động gửi đến trang thông báo đăng nhập thành công
-$_SESSION["txtUsername"];
-$_SESSION["txtPassword"];
-header("location:login_hello.php");
-}
+
+	echo " xin chào ".$txtUsername;
+	echo " <a href='logout.php'> Đăng xuất </a> </div> </div><br>";
+	echo "<a href='../index.php?a=4'> Vào trang quản lý </a> </div> </div><br>";
+	}
 else {
 echo "Sai tên đăng nhập hoặc mật khẩu";
 echo " <a href='../index.php'> Thử lại </a> </div> </div><br>";

@@ -1,5 +1,7 @@
 ﻿<?php 
 	session_start();
+	 global $conn;
+	 
 	if(isset($_GET["a"]) && $_GET["a"] != 0 && $_GET["a"] > 10)
 		$_SESSION["curURL"] = $_SERVER["REQUEST_URI"];
   

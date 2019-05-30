@@ -2,7 +2,7 @@
     <a href="index.php" class="close"><img src="images/close_pop.png" class="btn_close" title="Đóng" alt="Close" /></a>
           <form method="post" class="signin" action="login/xulydangnhap.php">
                 <fieldset class="textbox" style="text-align: center;">
-            	<label class="username">
+                <label class="username">
                 <span style="font-size:16px">Username</span>
                 <input id="Username" name="txtUsername" value="" type="text" autocomplete="on" placeholder="Username">
                 </label>

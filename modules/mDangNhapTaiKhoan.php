@@ -1,55 +1,60 @@
-﻿<div id = "frmdn" >
-    <!-----Dang nhap-------->
-    <link href="css/dangnhap.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript">
-    $(document).ready(function() {
-            <!--From dang nhap-->
-            $('a.login-window').click(function() {
-            
-            // Nhận được giá trị của biến từ một liên kết
-            var loginBox = $(this).attr('href');
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Quản lý nhân sự</title>
+<body style="margin-top:100px;">
+    <div id = "frmdn" style="width: 100%; ">
+        <form name="frmLogin" action="index.php?a=1" method="post" onsubmit="return KiemTraDangNhap()" style="float: right; margin-top: 10px;">
+                    <td nowrap="nowrap" align="right">Tên đăng nhập:</td>
+                    <td><input class="frm" type="text" name="Username" value="" id="txtUS" size="15" maxlength="20" width="15" /></td>
+                    <td nowrap="nowrap" align="right">Mật khẩu:</td>
+                    <td><input class="frm" type="password" name="Password"d="txtPS" size="15" maxlength="20" width="15" /></td>
+                    <td nowrap="nowrap" align="right">&nbsp;</td>
+                    <tr>
+                        <td>  &nbsp; </td>              
+                        <td > <input  type="radio" name="rdodn" value="tv" checked >Tài Vụ 
+                             <input type="radio" name="rdodn" value="gv" > Giáo Vụ
+                          </td>
+                    </tr>
+                                <td><input name="submit" type="submit" value="Đăng nhập" /></td>
+                </table>
+        </div>
+        </form>
+</body>
 
-            //Fade in the Popup and add close button
-            $(loginBox).fadeIn(300);
-            
-            //Set the center alignment padding + border
-            var popMargTop = ($(loginBox).height() + 24) / 2; 
-            var popMargLeft = ($(loginBox).width() + 24) / 2; 
-            
-            $(loginBox).css({ 
-                'margin-top' : -popMargTop,
-                'margin-left' : -popMargLeft
-            });
-            
-            // Add the mask to body
-            $('body').append('<div id="mask"></div>');
-            $('#mask').fadeIn(300);
-            
-            return false;
-        });
+<?php
+    if (isset($_POST['submit'])) {
+        $Username = mysqli_real_escape_string($conn, $_POST['Username']);
+        $Password = mysqli_real_escape_string($conn, $_POST['Password']);
+        $type = mysqli_real_escape_string($conn, $_POST["rdodn"]);
+      
+        if ($type=='gv') {
+            $sql = "SELECT * FROM giaovu WHERE MSGV='$Username' and matkhau='$Password'";  
+        }
+        else{
+            $sql="SELECT * FROM taivu WHERE MSTV='$Username' and matkhau='$Password'";
+                   
+        }   
+
         
-        // When clicking on the button close or the mask layer the popup closed
-        $('a.close, #mask').live('click', function() { 
-          $('#mask , .login-popup').fadeOut(300 , function() {
-            $('#mask').remove();  
-        }); 
-        return false;
-        });
-        <!--End From Dang nhap-->
-    });
-    </script>
+        $query=mysqli_query($conn, $sql);
+        $num_row=mysqli_num_rows($query);
+        if ($num_row!=0) {
+            $row=mysqli_fetch_array($query);
 
-    <div id = "dangnhap" style="float: right;" >  
-                <?php
-                    if(isset($_SESSION['idUser'])){
-                        require("login/login_hello.php");
-                    }else{
-                ?>
-                      <button style="width: 100px; height: 40px;margin:5px 20px;"><a style="text-decoration:none;color:black;" href="#login-box" class="login-window">đăng nhập</a></button> 
-                <?php
-                    }
-              ?>
-                         
-    </div>   
-</div>                 
-<?php require("login/dangnhap.php");?>  
+            $_SESSION["matkhau"]=$row['matkhau'];
+            $_SESSION["matkhau"]=$row['matkhau'];
+            $_SESSION["HOTEN"]=$row['HOTEN'];
+            $_SESSION["HOTEN"]=$row['HOTEN'];
+            
+            echo "bạn đã đăng nhập thành công";
+            echo "xin chào ".$row['HOTEN'];
+        }
+        else {
+            echo " Tên hoặc mật khẩu sai";
+        }
+        
+        }
+  ?>

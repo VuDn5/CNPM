@@ -12,9 +12,9 @@ if (!$conn) { die("Connection failed: " . mysqli_connect_error());
 
 ?>
 
-<?php
+<!-- <?php
 	define('SOTRANG',8);
 ?>
 <?php
 	define('SOTRANGCL',12);
-?>
+?> -->

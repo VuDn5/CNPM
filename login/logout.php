@@ -8,5 +8,5 @@
 	//session_unset($_SESSION['GioiTinh']);
 	//session_unset($_SESSION['idGroup']);	
 	session_destroy();
-	header("location:".$_SESSION['url']);
+	header("location: ../index.php");
 ?>

@@ -1,24 +1,22 @@
-<div>
-	chào
-	 <?php 
-  	if($_SESSION['txtUsername']){
-		echo " anh ".$_SESSION['txtUsername'];
-	}	
-	?> 
 <?php
-session_start();
-if(!$_SESSION[txtUsername]){
-header("location:../index.php");
-}
-?>
-<html>
-<body>
-Đăng nhập thành công !
-</body>
-</html>
- &nbsp;&nbsp;<a style="text-decoration:none;color:#FC0" href="admin/index.php" class="quantri">Trang Quản Trị </a>
-  <?php
+	ob_start();
+	session_start();
+	$txtUsername=$_POST['txtUsername'];
+	$txtPassword=$_POST['txtPassword'];
 	
+  
+		echo " anh ".$_SESSION['txtUsername'];
+
 ?>
-  <a style="text-decoration:none;color:#FC0" class="dangxuat" href="login/logout.php"> --- Đăng xuất </a> -- <a style="text-decoration:none;color:#FC0" href="index.php?p=chgpass">Đổi mật khẩu</a></p>
-</div>
+<html">
+   
+   <head>
+      <title>Chào mừng bạn đến với ... </title>
+   </head>
+   
+   <body>
+      <h1>Chào mừng <?php echo $txtUsername; ?></h1> 
+      <h2><a href="logout.php">Đăng xuất</a></h2>
+   </body>
+   
+</html>

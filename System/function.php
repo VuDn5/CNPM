@@ -108,3 +108,14 @@ function logout(){
 	session_destroy();
 }
 
+function check_login () {
+	if (isset($_SESSION['login']) && isset($_SESSION['login'])) {
+		return true;
+	}
+	else {
+		false;
+	}
+}
+
+
+
