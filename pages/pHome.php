@@ -6,6 +6,8 @@
 			
 			<li class="dropdown">
 				<a href="#thongtin"><b>Thông tin</b></a>
+				<li class="dropdown">
+				<a href="pages/sinhvien/admin/loginhs.php"><b>Xem điểm</b></a>
 			</li>
 		</ul>
 	</div> <!-- end container -->

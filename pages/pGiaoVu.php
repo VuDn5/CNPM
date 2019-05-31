@@ -23,6 +23,9 @@
 	</div> <!-- end bottomheader -->
 
 <div>
+	<div>
+		<p style="font-family:Tahoma;font-weight: bold;text-align: center;font-size: large">CHÀO MỪNG BẠN ĐẾN TRANG QUẢN LÝ CỦA GIÁO VỤ</p>
+	</div>
 <?php 
 
 				$p=(isset($_GET['p'])?$_GET['p']:'pHome');
