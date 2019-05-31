@@ -28,4 +28,13 @@ git clone https://github.com/openresty/lua-resty-redis.git
 	cd ../SPECS; rpmbuild -ba nginx.spec 
 /root/rpmbuild/RPMS/x86_64
 
+	wget https://github.com/simpl/ngx_devel_kit
+	 wget https://github.com/leev/ngx_http_geoip2_module
+	wget https://github.com/zebrafishlabs/nginx-statsd
+	wget https://github.com/openresty/lua-nginx-module
+ 	wget https://github.com/openresty/headers-more-nginx-module.git
+wget 'https://github.com/openresty/headers-more-nginx-module/archive/v0.33.zip'
+
+wget https://github.com/openresty/lua-resty-redis
+
 
