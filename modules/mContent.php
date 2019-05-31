@@ -10,7 +10,7 @@
             include ("pages/pSinhVien.php");
             break;
 	case 3:
-            include ("pages/pGiaoVien.php");
+            include ("pages/pGiaoVu.php");
             break;
 	case 4:
             include ("pages/pTaiVu.php");

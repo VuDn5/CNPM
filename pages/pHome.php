@@ -2,7 +2,7 @@
 	<div class="container">
 		<ul>
 			<li class="dropdown">
-				<a href="../index.php"><b>Trang chủ</b></a>
+				<a href="./index.php"><b>Trang chủ</b></a>
 			
 			<li class="dropdown">
 				<a href="#thongtin"><b>Thông tin</b></a>

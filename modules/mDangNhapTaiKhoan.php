@@ -48,10 +48,10 @@
             $_SESSION["HOTEN"]=$row['HOTEN'];
             $_SESSION["HOTEN"]=$row['HOTEN'];
 		if ($type=='gv') {
-			header("location: ./index.php?a=0&id=3");
+			header("location: ./index.php?a=3");
 		}
        	 	else{
-			header("location: ./index.php?a=0&id=4");
+			header("location: ./index.php?a=4");
         	}
         }
         else {

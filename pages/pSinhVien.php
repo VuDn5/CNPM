@@ -5,7 +5,7 @@
 				<a href="../index.php"><b>Trang chủ</b></a>
 			
 			<li class="dropdown">
-				<a href=""><b>Xem điểm</b></a>
+				<a href="index.php?a=2&p=Diem"><b>Xem điểm</b></a>
 			</li>
 			
 			<li class="dropdown">
@@ -16,5 +16,26 @@
 </div> <!-- end bottomheader -->
 
 <div>
-	<img src="images/student.jpg">
+	<?php 
+
+				$p=(isset($_GET['p'])?$_GET['p']:'pHome');
+					$action=(isset($_GET['action'])?$_GET['action']:'');
+
+            	
+				switch($p)
+				{		
+
+					case "Home": 		require("pages/pHome.php");
+											break;	
+
+					case "Diem": 		require("pages/sinhvien/xemdiemsv.php");
+											break;	
+					case "TKB": 	    require("pages/TKBSV.php");
+											break;	
+					
+
+		
+				}
+		
+ ?>
 </div>
