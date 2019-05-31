@@ -1,0 +1,95 @@
+server {
+    listen       85;
+    server_name  118.69.135.232;
+    server_name  web.fpt.vn;
+
+#        listen 443 ssl;
+        ssl_certificate     /cert/fpt.vn/x.fpt.vn.crt;
+        ssl_certificate_key /cert/fpt.vn/x.fpt.vn.key;
+
+    #charset koi8-r;
+    error_log  /var/log/nginx/portal.error.log;
+    access_log  /var/log/nginx/portal.access.log  main;
+    add_header 'Access-Control-Allow-Origin' '*';
+        add_header 'Access-Control-Allow-Credentials' 'true';
+        add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+
+    #return         301 https://$server_name$request_uri;
+
+    root /var/www/html;
+    index index.php index.html index.htm;
+    #index index.html index.htm;
+    location  ~*/(guest)/(s) {
+        if ($request_uri ~*  "/guest/s/(.*)/index.html") {
+                	set  $first_path_component  $1;
+                	add_header 'Site-Id' $first_path_component;
+                	rewrite ^(.*) http://118.69.135.232/wifi-js/index.html?siteid=$first_path_component permanent;
+                	#rewrite ^(.*) http://118.69.135.232/2z24mmbm/index.html?siteid=$first_path_component permanent;
+    
+    			 break;
+   		}
+        if ($request_uri ~*  "/guest/s/(.*)/\?") {
+                set  $first_path_component  $1;
+                add_header 'Site-Id' $first_path_component;
+                rewrite ^(.*) http://118.69.135.232/wifi-js/index.html?siteid=$first_path_component permanent;
+                #rewrite ^(.*) http://118.69.135.232/2z24mmbm/index.html?siteid=$first_path_component permanent;
+                break;
+
+        }
+        }
+
+    location / {
+        #root /usr/share/nginx/html;
+        try_files $uri $uri/ /index.html?$args;
+    }
+    location /api {
+	client_max_body_size 50k;
+	client_body_buffer_size 50k;
+	set $referer $http_Referer;
+	default_type 'text/plain';
+	if ( $arg_callback ) {
+		echo_before_body '$arg_callback(';
+		content_by_lua '
+			ngx.print( _M.app())
+		';
+		echo_after_body ');';
+
+	}
+	content_by_lua '
+		ngx.print(_M.app())
+		return
+	';
+    }
+
+
+    #error_page  404              /404.html;
+
+    # redirect server error pages to the static page /50x.html
+
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+    # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+    #
+    #location ~ \.php$ {
+    #    proxy_pass   http://127.0.0.1;
+    #}
+
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+#
+    location ~ \.php$ {
+    #    root           html;
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_index  index.php;
+        fastcgi_read_timeout 150;
+        fastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;
+        #fastcgi_param  SCRIPT_FILENAME   /var/www/html/FCALL/$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+   location ~ /\.ht {
+        deny  all;
+    }
+}
